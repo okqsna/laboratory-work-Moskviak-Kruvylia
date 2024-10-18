@@ -1,6 +1,6 @@
 """
 Laboratory work №1
-Work of Anna Kruvylia and Oksana Moskviak
+Work of Anna Kryvulia and Oksana Moskviak
 """
 
 def read_matrix(file_name):
