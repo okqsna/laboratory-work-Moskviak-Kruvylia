@@ -37,9 +37,13 @@ def write_to_file(matrix: list[list[int]], output_file: str)-> None:
 
     list[list[int]], str -> None
     Creates a file with input from {matrix}
-    >>> write_to_file([[1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1]], '1.csv')
-    >>> with open('1.csv', 'r', encoding='utf-8') as file:
-    ...    print(file.read())
+    >>> import tempfile
+    >>> with tempfile.NamedTemporaryFile(mode = "w",delete=False) as tmp:
+    ...         _= tmp.write('')
+    >>> write_to_file([[1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1],\
+        [1, 1, 1, 1, 1], [1, 1, 1, 1, 1]], tmp.name)
+    >>> with open(tmp.name, 'r', encoding ='utf-8') as fil:
+    ...     print(fil.read())
     11111
     11111
     11111
@@ -47,8 +51,6 @@ def write_to_file(matrix: list[list[int]], output_file: str)-> None:
     11111
     """
     if not isinstance(matrix, list) or not isinstance(output_file, str):
-        return None
-    if '.csv' not in output_file:
         return None
 
     with open(output_file, 'w', encoding="utf-8") as f:
